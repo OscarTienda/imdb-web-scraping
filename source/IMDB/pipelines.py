@@ -5,9 +5,16 @@
 
 
 # useful for handling different item types with a single interface
-from itemadapter import ItemAdapter
+from scrapy.exporters import CsvItemExporter
 
+from itemadapter import ItemAdapter
 
 class ImdbPipeline:
     def process_item(self, item, spider):
         return item
+
+
+class MyCsvItemExporter(CsvItemExporter):
+    def __init__(self, *args, **kwargs):
+        kwargs['delimiter'] = ';'
+        super().__init__(*args, **kwargs)

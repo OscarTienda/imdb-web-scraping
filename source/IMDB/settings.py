@@ -62,9 +62,25 @@ DOWNLOAD_DELAY = 3
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "IMDB.pipelines.ImdbPipeline": 300,
-#}
+ITEM_PIPELINES = {
+   "IMDB.pipelines.ImdbPipeline": 300,
+}
+# ITEM_PIPELINES = {
+#    "IMDB.pipelines.CsvExportPipeline": 300,
+# }
+
+# FEED_EXPORT_DELIMITER = ';'
+
+FEEDS = {
+    "../../datasets/imdb.csv": {"format": "csv"},
+}
+FEED_EXPORTERS = {
+    'csv': 'IMDB.pipelines.MyCsvItemExporter',
+}
+
+# ITEM_PIPELINES = {
+#     "scrapy.exporters.CsvItemExporter": 1,
+# }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
