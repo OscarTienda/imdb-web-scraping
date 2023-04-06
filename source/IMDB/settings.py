@@ -72,7 +72,7 @@ ITEM_PIPELINES = {
 # FEED_EXPORT_DELIMITER = ';'
 
 FEEDS = {
-    "../../datasets/imdb.csv": {"format": "csv"},
+    "../../dataset/imdb.csv": {"format": "csv"},
 }
 FEED_EXPORTERS = {
     'csv': 'IMDB.pipelines.MyCsvItemExporter',
