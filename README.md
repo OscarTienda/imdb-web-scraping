@@ -19,3 +19,6 @@ La estructura del proyecto es la siguiente:
             spiders/            # a directory where you'll later put your spiders
                 __init__.py
                 IMDBspider.py   # spider IMDB
+
+ DOI de Zenodo: https://zenodo.org/
+ 
