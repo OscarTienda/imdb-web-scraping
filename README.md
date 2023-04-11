@@ -6,7 +6,7 @@ IMDB web scraping done utilizing Scrapy
 ## Descripción del repositorio
 **/source**: Proyecto scrapy generano con comando ***scrapy startproject IMDB***.
 
-La estructura del proyecto es la siguiente:
+La estructura del proyecto generado es la siguiente:
 
     source/
         scrapy.cfg              # deploy configuration file
@@ -18,7 +18,12 @@ La estructura del proyecto es la siguiente:
             settings.py         # project settings file
             spiders/            # a directory where you'll later put your spiders
                 __init__.py
+
+Generamos el spider ejecutando el comando ***scrapy genspider IMDBspider***
+
+            spiders/            # a directory where you'll later put your spiders
+                __init__.py
                 IMDBspider.py   # spider IMDB
 
- DOI de Zenodo: https://zenodo.org/
+DOI de Zenodo: https://zenodo.org/
  
