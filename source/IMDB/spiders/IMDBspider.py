@@ -11,8 +11,13 @@ class IMDBSpider(scrapy.Spider):
     def parse(self, response):
         movies = response.xpath('//div[@class="lister-item-content"]')
         for movie in movies:
+            votes = movie.xpath('.//span[@name="nv"]/@data-value').get()
+            rating = response.css('.ratings-bar .inline-block.ratings-imdb-rating > strong::text').get()
+            duration = movie.xpath('.//span[@class="runtime"]/text()').get()
+
+            #print("rating:", rating)
             link = movie.css('a::attr(href)').get()
-            yield response.follow(link, self.parse_detail)
+            yield response.follow(link, self.parse_detail, meta={'votes': votes, 'rating': rating, 'duration': duration})
 
         # Go to the next page
         next_page = response.css('.next-page::attr(href)').get()
@@ -35,7 +40,8 @@ class IMDBSpider(scrapy.Spider):
         
         # Obtener duración de la película
         # duration = response.css('.TitleBlockMetaData__ListItemText-sc-12ein40-2:nth-child(3)::text').get()
-        duration = response.xpath('//li[contains(@class, "ipc-inline-list__item")]/text()').get()
+        # duration = response.xpath('//li[contains(@class, "ipc-inline-list__item")]/text()').get()
+        duration = response.meta['duration']
         item_loader.add_value('duration', duration)
         
         # Obtener géneros de la película
@@ -44,13 +50,18 @@ class IMDBSpider(scrapy.Spider):
         item_loader.add_value('genre', genre)
         
         # Obtener calificación de la película
-        rating = response.xpath('//div[@data-testid="hero-rating-bar__aggregate-rating__score"]/span[@class="sc-e457ee34-1 squoh"]/text()').get()
+        rating = response.meta['rating']
         item_loader.add_value('rating', rating)
         
         # Obtener cantidad de votos de la película
-        votes = response.xpath('//div[@class="sc-e457ee34-0 kqTStR"]/div[@class="sc-e457ee34-3 frEfSL"]/text()').get()
+        #votes = response.xpath('//div[@class="sc-e457ee34-0 kqTStR"]/div[@class="sc-e457ee34-3 frEfSL"]/text()').get()
+        votes = response.meta['votes']
         item_loader.add_value('votes', votes)
-        
+
+        # Obtener url de la película
+        url = response.url
+        item_loader.add_value('url', url)
+
         # Obtener la descripción de la película
         # summary = response.css('.GenresAndPlot__Plot-cum89p-6 > span::text').get()
         summary = response.css('span[data-testid="plot-xs_to_m"]::text').extract_first()
