@@ -8,7 +8,7 @@ IMDB web scraping done utilizing Scrapy
 
 La estructura del proyecto es la siguiente:
 
-    IMDB/
+    source/
         scrapy.cfg              # deploy configuration file
         IMDB/                   # project's Python module, you'll import your code from here
             __init__.py
