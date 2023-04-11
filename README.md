@@ -26,4 +26,7 @@ Generamos el spider ejecutando el comando ***scrapy genspider IMDBspider***
                 IMDBspider.py   # spider IMDB
 
 DOI de Zenodo: https://zenodo.org/
- 
+
+## Ejecución del proyecto
+
+Desde una terminal ejecutamos comando ***scrapy crawl imdb_spider***
