@@ -29,4 +29,4 @@ DOI de Zenodo: https://zenodo.org/
 
 ## Ejecución del proyecto
 
-Desde una terminal ejecutamos comando ***scrapy crawl imdb_spider***
+Desde una terminal ejecutamos desde directorio ***source/IMDB/*** el comando ***scrapy crawl imdb_spider***
