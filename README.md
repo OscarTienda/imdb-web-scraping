@@ -30,3 +30,8 @@ DOI de Zenodo: https://zenodo.org/
 ## Ejecución del proyecto
 
 Desde una terminal ejecutamos desde directorio ***source/IMDB/*** el comando ***scrapy crawl imdb_spider***
+
+## Salida Ejecución: dataset 
+
+    dataset/
+        imdb.csv              # dataset “Películas de IMDB”
