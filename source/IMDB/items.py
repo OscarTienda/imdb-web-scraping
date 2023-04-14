@@ -6,7 +6,7 @@ import re
 import scrapy
 from scrapy.loader import ItemLoader
 # from scrapy.loader.processors import MapCompose, TakeFirst
-from itemloaders.processors import MapCompose, TakeFirst
+from itemloaders.processors import MapCompose, TakeFirst, Join
 
 def extract_year(value):
     match = re.search(r"\d{4}", value)
@@ -38,11 +38,13 @@ class ImdbMovie(scrapy.Item):
         output_processor=TakeFirst()
     )
     #duration = scrapy.Field(output_processor=TakeFirst())
-    genre = scrapy.Field(input_processor=MapCompose(str.strip))
+    genre = scrapy.Field(input_processor=MapCompose(str.strip), 
+                         output_processor=Join(','))
     rating = scrapy.Field(output_processor=TakeFirst())
     summary = scrapy.Field(output_processor=TakeFirst())
     url = scrapy.Field(output_processor=TakeFirst())
-    stars = scrapy.Field(input_processor=MapCompose(str.strip))
+    stars = scrapy.Field(input_processor=MapCompose(str.strip),
+                        output_processor=Join(','))
     votes = scrapy.Field(output_processor=TakeFirst())
     num_user_reviews = scrapy.Field(output_processor=TakeFirst())
     num_critic_reviews = scrapy.Field(output_processor=TakeFirst())
