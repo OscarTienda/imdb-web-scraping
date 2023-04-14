@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Scrapy stuff:
+.scrapy
+
+# IDEs project files
+.vscode
+
+# Folder view configuration files
+*.DS_Store
+
+# Thumbnails
+._*
+Thumbs.db
