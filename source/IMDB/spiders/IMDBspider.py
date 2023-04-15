@@ -71,6 +71,10 @@ class IMDBSpider(scrapy.Spider):
         num_user_reviews = response.css('a[href*="/reviews/"] .score::text').get()
         item_loader.add_value('num_user_reviews', num_user_reviews)
 
+        # Obtener el director de la película
+        director = response.css('li[data-testid="title-pc-principal-credit"] a::text').get()
+        item_loader.add_value('director', director)
+
         # Obtener num_user_reviews
         num_critic_reviews = response.css('a[href*="/externalreviews/"] .score::text').get()
         item_loader.add_value('num_critic_reviews', num_critic_reviews)

@@ -37,6 +37,7 @@ class ImdbMovie(scrapy.Item):
         input_processor=MapCompose(extract_duration),
         output_processor=TakeFirst()
     )
+    director = scrapy.Field(output_processor=TakeFirst())
     #duration = scrapy.Field(output_processor=TakeFirst())
     genre = scrapy.Field(input_processor=MapCompose(str.strip), 
                          output_processor=Join(','))
