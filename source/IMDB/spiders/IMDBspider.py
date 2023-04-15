@@ -65,7 +65,7 @@ class IMDBSpider(scrapy.Spider):
         # Obtener la descripción de la película
         # summary = response.css('.GenresAndPlot__Plot-cum89p-6 > span::text').get()
         summary = response.css('span[data-testid="plot-xs_to_m"]::text').extract_first()
-        item_loader.add_value('summary', summary)
+        item_loader.add_value('summary', f'"{summary}"')
 
         # Obtener num_user_reviews
         num_user_reviews = response.css('a[href*="/reviews/"] .score::text').get()

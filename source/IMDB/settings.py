@@ -31,7 +31,7 @@ DOWNLOAD_DELAY = 3
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -69,11 +69,10 @@ ITEM_PIPELINES = {
 #    "IMDB.pipelines.CsvExportPipeline": 300,
 # }
 
-# FEED_EXPORT_DELIMITER = ';'
-
 FEEDS = {
-    "../../dataset/imdb.csv": {"format": "csv"},
+    "../../dataset/imdb.csv": {"format": "csv", "overwrite": True},
 }
+
 FEED_EXPORTERS = {
     'csv': 'IMDB.pipelines.MyCsvItemExporter',
 }
@@ -107,3 +106,5 @@ FEED_EXPORTERS = {
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
+
+DUPEFILTER_CLASS = 'scrapy.dupefilters.RFPDupeFilter'
