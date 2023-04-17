@@ -25,7 +25,8 @@ Generamos el spider ejecutando el comando ***scrapy genspider IMDBspider***
                 __init__.py
                 IMDBspider.py   # spider IMDB
 
-DOI de Zenodo: https://zenodo.org/
+DOI: 10.5281/zenodo.7838158
+Zenodo URL: https://zenodo.org/record/7838158#.ZD123XbP1D8
 
 ## Ejecución del proyecto
 
