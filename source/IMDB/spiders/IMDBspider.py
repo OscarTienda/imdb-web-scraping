@@ -6,7 +6,8 @@ from IMDB.items import ImdbMovie
 class IMDBSpider(scrapy.Spider):
     name = 'imdb_spider'
     allowed_domains = ['www.imdb.com']
-    start_urls = ['https://www.imdb.com/search/title/?release_date=2010-01-01,2023-04-03&user_rating=7.5,10.0&num_votes=1000000,']
+    # start_urls = ['https://www.imdb.com/search/title/?release_date=2010-01-01,2023-04-03&user_rating=7.5,10.0&num_votes=1000000,']
+    start_urls = ['https://www.imdb.com/search/title/?release_date=2000-01-01,2023-04-03&user_rating=0.0,10.0&num_votes=150000,&sort=user_rating,asc']
 
     def parse(self, response):
         movies = response.xpath('//div[@class="lister-item-content"]')
