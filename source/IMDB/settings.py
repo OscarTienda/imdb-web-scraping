@@ -107,4 +107,5 @@ REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
 
+# In some cases Scrapy generated duplicate requests that translated into duplicated entries. This solves it.
 DUPEFILTER_CLASS = 'scrapy.dupefilters.RFPDupeFilter'
